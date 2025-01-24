@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const descriptionDisplay = document.getElementById("description");
     const errorMessage = document.getElementById("error-messag");
   
-    const API_KEY = "967a00383489b9807240d813e922325e"; //env variables
+    const API_KEY = "967a00383489b9807240d813e922325e";
   
     getWeatherBtn.addEventListener("click", async () => {
       const city = cityInput.value.trim();
       if (!city) return;
   
-      // it may throw an error
-      // server/database is always in another continent
+
   
       try {
         const weatherData = await fetchWeatherData(city);
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     async function fetchWeatherData(city) {
-      //gets the data
+      
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
   
       const response = await fetch(url);
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       temperatureDisplay.textContent = `Temperature : ${main.temp}`;
       descriptionDisplay.textContent = `Weather : ${weather[0].description}`;
   
-      //unlock the display
+      
       weatherInfo.classList.remove("hidden");
       errorMessage.classList.add("hidden");
     }
